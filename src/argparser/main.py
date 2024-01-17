@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-PROGRAM = "argue"
+PROGRAM = "argparser"
 
 def main():
     parser = argparse.ArgumentParser(description='Prints a greeting message to the user.',
