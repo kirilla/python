@@ -10,11 +10,13 @@ authors = [
 	{ name = "Jonas Sundstrom", email = "jonas@kirilla.se" }
 ]
 license = { file = "LICENSE" }
-dependencies = [] 
+dependencies = [
+	"argparse"
+] 
 classifiers = [
 	# classifiers?
 ]
 
 [project.entry-points.console_scripts]
 hello = "hello.main:main"
-
+argue = "argue.main:main"
