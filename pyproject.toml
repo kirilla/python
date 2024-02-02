@@ -21,3 +21,4 @@ classifiers = [
 hello = "hello.main:main"
 argparser = "argparser.main:main"
 argsys = "argsys.main:main"
+webmin = "webmin.main:main"
