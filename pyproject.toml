@@ -3,9 +3,9 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "edu-pentest-toolbox"
-version = "0.0.1"
-description = "Not much to see here yet"
+name = "python"
+version = "1.0.0"
+description = "le_big_dump"
 authors = [
 	{ name = "Jonas Sundstrom", email = "jonas@kirilla.se" }
 ]
