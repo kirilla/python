@@ -27,9 +27,12 @@ deactivate
 ## Install
 
 ```bash
-pip install . --user
+pip install .
 
-# see https://pip.pypa.io/en/latest/user_guide/#user-installs
+# When doing a pip install in a virtual python environment, the venv,
+# executables will be installed in venv/bin.
+# If not using a venv you can add --user to force pip to install to a user-location.
+# (The default is a systemwide location, which could be a bad idea. It depends.)
 ```
 
 ## Usage
