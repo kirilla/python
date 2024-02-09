@@ -1,4 +1,4 @@
-# Python coursework
+# Python coursework 🤹🏻‍♂️
 
 ## What's in the box!?
 Yeah.
