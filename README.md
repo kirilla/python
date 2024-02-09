@@ -1,5 +1,8 @@
 # Python coursework
 
+## What's in the box!?
+Yeah. Something.
+
 ## Get started
 
 ```bash
