@@ -14,7 +14,7 @@ source venv/bin/activate
 ```bash
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
-# Do your thing! Edit, run, debug, ...
+# Pandemonium. (Stay safe. Use vi.)
 
 deactivate
 ```
