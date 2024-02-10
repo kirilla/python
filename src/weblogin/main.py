@@ -26,15 +26,15 @@ PARAMS = (
 
 def main():
     """
-    Start the program, 
-    read the password file, 
-    loop over passwords and try them one at a time. 
+    Start the program,
+    read the password file,
+    loop over passwords and try them one at a time.
     """
     with open(PASSWORD_FILE_PATH, encoding='utf-8', errors='ignore') as file:
         data = file.read()
         lines = data.split('\n')
 
-        passwords = [ x.strip() for x in lines if x ]
+        passwords = [x.strip() for x in lines if x]
 
         for password in passwords:
             try_credentials(USERNAME, password)

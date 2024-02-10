@@ -6,6 +6,7 @@ import sys
 
 PROGRAM = "argsys"
 
+
 def main():
     """
     Start the program.
@@ -19,6 +20,7 @@ def main():
             print(f"Hello, {name}!")
     else:
         print_usage()
+
 
 def print_usage():
     """

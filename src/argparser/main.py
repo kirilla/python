@@ -7,6 +7,7 @@ import sys
 
 PROGRAM = "argparser"
 
+
 def main():
     """
     Define the arguments declaratively.
@@ -15,13 +16,13 @@ def main():
     """
     parser = argparse.ArgumentParser(
             description='Prints a greeting message to the user.',
-			prog = PROGRAM)
+            prog=PROGRAM)
 
     parser.add_argument(
             'name', nargs='?', type=str, help='the name of the user')
 
     parser.add_argument(
-            '-v', '--version', action='version', version='%(prog)s 1.0', 
+            '-v', '--version', action='version', version='%(prog)s 1.0',
             help="show program's version number and exit")
 
     args = parser.parse_args()
