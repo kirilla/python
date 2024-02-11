@@ -13,7 +13,7 @@ FILE_NAME = "todolist.txt"
 
 def main():
     """
-    Let's begin
+    Display the menu of commands.
     """
     command = ""
     try:
