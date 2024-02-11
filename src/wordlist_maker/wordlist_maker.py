@@ -14,7 +14,7 @@ class StrippingFile:
     """
     def __init__(self, file_path):
         """
-        Constructor
+        Open the file for reading.
         """
         self.file_path = file_path
         # pylint: disable=consider-using-with
@@ -22,13 +22,13 @@ class StrippingFile:
 
     def __iter__(self):
         """
-        Iteration method
+        Return the iterator. (Self, in this case.)
         """
         return self
 
     def __next__(self):
         """
-        Iteratin method
+        Return the next line of the file, stripped.
         """
         line = self.file.readline()
         line = line.strip()
@@ -45,7 +45,8 @@ class StrippingFile:
 
 def main():
     """
-    Here they come.
+    Parse given arguments, start the wordlist generation,
+    or display the usage information.
     """
     parser = argparse.ArgumentParser(
             formatter_class=argparse.RawDescriptionHelpFormatter,
