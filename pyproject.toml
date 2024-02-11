@@ -18,7 +18,10 @@ classifiers = [
 ]
 
 [project.entry-points.console_scripts]
-hello = "hello.main:main"
 argparser = "argparser.main:main"
 argsys = "argsys.main:main"
+hello = "hello.main:main"
+todo = "todo.todo:main"
+weblogin = "weblogin.main:main"
 webmin = "webmin.main:main"
+wordlist_maker = "wordlist_maker.wordlist_maker:main"
