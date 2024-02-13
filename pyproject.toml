@@ -13,6 +13,7 @@ license = { file = "LICENSE" }
 dependencies = [
 	"argparse",
 	"requests",
+	"scapy",
 ] 
 classifiers = [
 	# classifiers?
@@ -21,6 +22,7 @@ classifiers = [
 [project.entry-points.console_scripts]
 argparser = "argparser.main:main"
 argsys = "argsys.main:main"
+arp_network_scanner = "arp_network_scanner.main:main"
 curl2python = "curl2python.main:main"
 hello = "hello.main:main"
 todo = "todo.todo:main"
