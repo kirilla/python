@@ -12,6 +12,7 @@ authors = [
 license = { file = "LICENSE" }
 dependencies = [
 	"argparse",
+	"paramiko",
 	"pyfiglet",
 	"requests",
 	"scapy",
@@ -25,6 +26,7 @@ arp_network_scanner = "arp_network_scanner.main:main"
 curl2python = "curl2python.main:main"
 md5_hash_cracker = "md5_hash_cracker.main:main"
 portscanner = "portscanner.main:main"
+sshlogin = "sshlogin.main:main"
 todo = "todo.todo:main"
 web_directory_enumeration = "web_directory_enumeration.main:main"
 web_downloader = "web_downloader.main:main"
