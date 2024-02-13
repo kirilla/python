@@ -12,6 +12,7 @@ authors = [
 license = { file = "LICENSE" }
 dependencies = [
 	"argparse",
+	"pyfiglet",
 	"requests",
 	"scapy",
 ] 
@@ -25,6 +26,7 @@ argsys = "argsys.main:main"
 arp_network_scanner = "arp_network_scanner.main:main"
 curl2python = "curl2python.main:main"
 hello = "hello.main:main"
+portscanner = "portscanner.main:main"
 todo = "todo.todo:main"
 web_directory_enumeration = "web_directory_enumeration.main:main"
 web_subdomain_enumeration = "web_subdomain_enumeration.main:main"
