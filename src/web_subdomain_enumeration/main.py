@@ -5,6 +5,9 @@ This is a script to enumerate the subdomains of a webserver
 for which the parent domain is already known.
 
 NOTE: Untested. Not sure it works. False positives?
+
+Based on sample code from 
+https://tryhackme.com/room/pythonforcybersecurity
 """
 
 
