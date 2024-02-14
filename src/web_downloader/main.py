@@ -11,6 +11,12 @@ import requests
 
 
 def main():
+    """
+    Define the arguments, parse the arguments,
+    handle the argument (or lack thereof),
+    make the web request, and save the result.
+    """
+
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
@@ -23,7 +29,7 @@ def main():
 
     args = parser.parse_args()
 
-    response = requests.get(args.url, allow_redirects=True)
+    response = requests.get(args.url, allow_redirects=True, timeout=10)
 
     with open(args.output, 'wb') as file:
         file.write(response.content)

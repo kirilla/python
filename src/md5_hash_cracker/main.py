@@ -12,12 +12,18 @@ import pyfiglet
 
 
 def main():
+    """
+    Define arguments, open the wordlist file,
+    loop over it, hash each word, compare it to the given hash,
+    and print the word if the computed hash matches the given.
+    """
+
     parser = argparse.ArgumentParser()
     parser.add_argument("hash", help="the md5 hash string")
     parser.add_argument("wordlist", help="the wordlist file path")
     args = parser.parse_args()
 
-    with open(args.wordlist, 'r') as file:
+    with open(args.wordlist, 'r', encoding="utf-8", errors="ignore") as file:
         for line in file:
 
             word = line.strip()

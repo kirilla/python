@@ -17,9 +17,15 @@ FILE = "wordlist.txt"
 
 
 def try_word(word):
+    """
+    Make an http/https request for the base URL and the word,
+    and print the result: found, not found or unknown.
+    """
 
     try:
-        r = requests.get(f"{URL}/{word}", timout=10)
+        r = requests.get(f"{URL}/{word}", timeout=10)
+
+    # pylint: disable=broad-exception-caught
     except Exception:
         print(f"[e] {word}")
 
@@ -32,6 +38,12 @@ def try_word(word):
 
 
 def main():
+    """
+    Open the file, containing a list of common directory names,
+    and/or file names, loop over these, 
+    and call the try_word() function.
+    """
+
     with open(FILE, encoding="utf-8", errors="ignore") as file:
         for word in file:
             word = word.strip()

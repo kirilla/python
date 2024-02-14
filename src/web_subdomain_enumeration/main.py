@@ -19,10 +19,14 @@ FILE = "subdomains.txt"
 
 
 def try_subdomain(sub):
+    """
+    Make an http request to see if the webserver answers to it.
+    """
+
     url = f"http://{sub}.{DOMAIN}"
 
     try:
-        requests.get(url)
+        requests.get(url, timeout=10)
         print(f"[+] {sub}")
 
     except requests.ConnectionError:
@@ -30,6 +34,11 @@ def try_subdomain(sub):
 
 
 def main():
+    """
+    Open the file with a wordlist of common subdomain names,
+    and loop over them, calling the try_subdomains() function.
+    """
+
     with open(FILE, encoding="utf-8", errors="ignore") as file:
         for sub in file:
             sub = sub.strip()

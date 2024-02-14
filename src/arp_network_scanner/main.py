@@ -5,7 +5,7 @@ arp_network_scanner
 
 import errno
 
-from scapy.all import Ether, ARP, srp
+from scapy.all import srp, Ether, ARP
 
 
 INTERFACE = "eth0"
@@ -22,10 +22,9 @@ def main():
     try:
         packet = Ether(dst=BROADCAST_MAC)/ARP(pdst=IP_RANGE)
 
-        answered, unanswered = srp(
-                packet, timeout=2, iface=INTERFACE, inter=0.1)
+        ans, _ = srp(packet, timeout=2, iface=INTERFACE, inter=0.1)
 
-        for send, receive in answered:
+        for _, receive in ans:
             print(receive.sprintf(r"%Ether.src% - %ARP.psrc%"))
 
     except PermissionError as e:

@@ -11,6 +11,11 @@ import paramiko
 
 
 def ssh_connect(target, port, username, password):
+    """
+    Initialize an SSH client, 
+    try to connect with the given username and password,
+    and return a success result, true or false.
+    """
 
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -28,6 +33,10 @@ def ssh_connect(target, port, username, password):
 
 
 def main():
+    """
+    Set up arguments, open the wordlist to be used for password checking,
+    and call the ssh_connect() function.
+    """
 
     parser = argparse.ArgumentParser()
 
@@ -46,7 +55,7 @@ def main():
 
     args = parser.parse_args()
 
-    with open(args.wordlist, 'r') as file:
+    with open(args.wordlist, 'r', encoding="utf-8", errors="ignore") as file:
         for line in file:
             password = line.strip()
 
@@ -56,10 +65,10 @@ def main():
 
                 if success:
                     print(f"[+] {password}")
-                    break
                 else:
                     print(f"[-] {password}")
 
+            # pylint: disable=broad-exception-caught
             except Exception as e:
                 print(e)
 

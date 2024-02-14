@@ -17,6 +17,11 @@ ENDING_PORT = 65535
 
 
 def try_port(port):
+    """
+    Open a TCP socket to the given port number,
+    connect, and return 0 (no error) for an open port.
+    """
+
     result = 1
 
     try:
@@ -26,6 +31,8 @@ def try_port(port):
         if r == 0:
             result = r
         sock.close()
+
+    # pylint: disable=broad-exception-caught
     except Exception:
         pass
 

