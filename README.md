@@ -7,7 +7,6 @@
 - pickle revshell maker (+ vulnerable webserver)
 - portscanner
 - SSH server based on paramiko 
-- SSH server
 - SSH login bruteforcer
 - Todo application
 - Web directory enumerator
