@@ -6,13 +6,12 @@ for which the parent domain is already known.
 
 NOTE: Untested. Not sure it works. False positives?
 
-Based on sample code from 
+Based on sample code from
 https://tryhackme.com/room/pythonforcybersecurity
 """
 
 
 import requests
-import sys
 
 
 DOMAIN = "example.loc"

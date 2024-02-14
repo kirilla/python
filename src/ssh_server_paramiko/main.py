@@ -1,5 +1,5 @@
 """
-An ethical SSH server, written by ChatGPT, 
+An ethical SSH server, written by ChatGPT,
 with credentials given as command-line arguments when started.
 
 Untested.
@@ -17,7 +17,7 @@ def handle_connection(client, username, password):
     try:
         transport = paramiko.Transport(client)
         transport.add_server_key(paramiko.RSAKey(filename='test_rsa.key'))
-        
+
         server = SSHServer()
         transport.start_server(server=server)
 
@@ -72,6 +72,7 @@ def main():
     password = sys.argv[3]
 
     start_server(port, username, password)
+
 
 if __name__ == "__main__":
     main()

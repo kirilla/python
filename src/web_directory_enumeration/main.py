@@ -10,7 +10,6 @@ https://tryhackme.com/room/pythonforcybersecurity
 
 
 import requests
-import sys
 
 
 URL = "http://example.loc"
@@ -20,15 +19,15 @@ FILE = "wordlist.txt"
 def try_word(word):
 
     try:
-        r = requests.get(f"{URL}/{word}")
-    except:
+        r = requests.get(f"{URL}/{word}", timout=10)
+    except Exception:
         print(f"[e] {word}")
 
     if r.status_code in [200]:
         print(f"[+] {word}")
     elif r.status_code in [404]:
         print(f"[-] {word}")
-    elif:
+    else:
         print(f"[?] {word}")
 
 

@@ -6,9 +6,6 @@ https://tryhackme.com/room/pythonforcybersecurity
 """
 
 
-import sys
-import os
-
 import argparse
 import paramiko
 
@@ -27,18 +24,18 @@ def ssh_connect(target, port, username, password):
         success = False
 
     ssh.close()
-    return result
+    return success
 
 
 def main():
 
     parser = argparse.ArgumentParser()
-    
+
     parser.add_argument(
             "-t", "--target", help="the host IP number")
 
     parser.add_argument(
-            "-p", "--port", help="the host portnumber", 
+            "-p", "--port", help="the host portnumber",
             default=22, required=False)
 
     parser.add_argument(

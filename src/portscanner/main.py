@@ -1,12 +1,11 @@
 """
 Portscanner
 
-Based on sample code from 
+Based on sample code from
 https://tryhackme.com/room/pythonforcybersecurity
 """
 
 
-import sys
 import socket
 import pyfiglet
 
@@ -27,7 +26,7 @@ def try_port(port):
         if r == 0:
             result = r
         sock.close()
-    except Exception as e:
+    except Exception:
         pass
 
     return result
