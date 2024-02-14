@@ -12,6 +12,7 @@ authors = [
 license = { file = "LICENSE" }
 dependencies = [
 	"argparse",
+	"flask",
 	"paramiko",
 	"pyfiglet",
 	"requests",
