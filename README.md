@@ -1,8 +1,23 @@
 # Python coursework 🤹🏻‍♂️
 
 ## What's in the box!?
-Yeah.
-About that...
+
+- ARP network scanner
+- MD5 hash cracker
+- pickle revshell maker (+ vulnerable webserver)
+- portscanner
+- SSH server based on paramiko 
+- SSH server
+- SSH login bruteforcer
+- Todo application
+- Web directory enumerator
+- Web file downloader
+- web subdomain enumerator
+- Web login bruteforcer
+- Web login bruteforcer (wordpress)
+- Web login curl2python (script generator)
+- Webmin exploit (CVE-2012-2982)
+- Wordlist maker (password fuzzer)
 
 ## Get started
 
@@ -38,10 +53,8 @@ pip install .
 ## Usage
 
 ```bash
-nada, silch, NaN, nil
+Mañana.
 ```
-
-
 
 ### Fineprint
 Look. About the code. Half of the code isn't mine. I nabbed it. Copy-pasted. ChatGPT wrote it. Does it matter? Sure it does. But who cares. Do YOU have a lawyer? 🕵🏻‍♂ 🚬 Yeah, I didn't think so.
