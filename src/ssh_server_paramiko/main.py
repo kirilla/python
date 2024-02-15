@@ -40,10 +40,13 @@ def handle_connection(client, username, password):
         client.close()
 
 
-class SSHServer(paramiko.ServerInterface):  # add username, password, to constructor?
+class SSHServer(paramiko.ServerInterface):
     """
     A class that implements the authentication behavior.
     """
+
+    # TODO
+    # add username, password properties and pass into constructor?
 
     def check_auth_password(self, username, password):
         """

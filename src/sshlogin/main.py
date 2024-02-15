@@ -12,7 +12,7 @@ import paramiko
 
 def ssh_connect(target, port, username, password):
     """
-    Initialize an SSH client, 
+    Initialize an SSH client,
     try to connect with the given username and password,
     and return a success result, true or false.
     """

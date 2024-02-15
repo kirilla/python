@@ -40,7 +40,7 @@ def try_word(word):
 def main():
     """
     Open the file, containing a list of common directory names,
-    and/or file names, loop over these, 
+    and/or file names, loop over these,
     and call the try_word() function.
     """
 
