@@ -72,8 +72,8 @@ l:w:c    literal string 1, wordlist 1, character set 1
                         nargs="+", help="a character set")
     args = parser.parse_args()
 
-    print(args.template)
-    print(args.wordlists)
+    # print(args.template)
+    # print(args.wordlists)
 
     references = []
 
@@ -92,7 +92,7 @@ l:w:c    literal string 1, wordlist 1, character set 1
             print(f"Unexpected value in template: {source}")
             sys.exit(1)
 
-    print(references)
+    # print(references)
 
     iterator = itertools.product(*references)
 
