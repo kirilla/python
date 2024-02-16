@@ -81,11 +81,71 @@ $ curl -d "pickled=gASVbgAAAAAAAACMBX..." http://127.0.0.1:5000/unpickle
 # Does it work? I don't think so. Someting about truncation.
 ```
 
+**portscanner**
+```bash
+TODO
+```
 
-
-**ports don't come easy**
+**portscanner and vulnerability reporting toolchain**
 ```bash
 ./scan -p 1-10000 | ./probe | ./report -s "Automatic port scanning"
+```
+
+**SSH server based on paramiko**
+```bash
+TODO
+
+# Not working
+```
+
+**SSH login bruteforcer**
+```bash
+Baaaar
+```
+
+**Todo application**
+```bash
+Baaaar
+```
+
+**Web directory enumerator**
+```bash
+TODO
+```
+
+**Web file downloader**
+```bash
+TODO
+```
+
+**web subdomain enumerator**
+```bash
+TODO
+```
+
+**Web login bruteforcer**
+```bash
+TODO
+```
+
+**Web login bruteforcer (wordpress)**
+```bash
+TODO
+```
+
+**Web login curl2python (script generator)**
+```bash
+TODO
+```
+
+**Webmin exploit (CVE-2012-2982)**
+```bash
+TODO
+```
+
+**Wordlist maker (password fuzzer)**
+```bash
+TODO
 ```
 
 ### Fineprint
