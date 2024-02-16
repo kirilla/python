@@ -25,7 +25,7 @@ classifiers = [
 
 [project.entry-points.console_scripts]
 arp_network_scanner = "arp_network_scanner.main:main"
-curl2python = "curl2python.main:main"
+curl2python = "weblogin_curl2python.main:main"
 md5_hash_cracker = "md5_hash_cracker.main:main"
 pickle_revshell_maker = "pickle_phone_home.pickler:main"
 pickle_web_vuln = "pickle_phone_home.unpickler:main"
