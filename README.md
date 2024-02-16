@@ -83,24 +83,37 @@ $ curl -d "pickled=gASVbgAAAAAAAACMBX..." http://127.0.0.1:5000/unpickle
 
 **portscanner**
 ```bash
-TODO
+$ portscanner (no arguments)
+
+# Harcoded IP 127.0.0.1 and port range 1 - 65535.
+# Edit the script to your heart's content.
 ```
 
 **portscanner and vulnerability reporting toolchain**
 ```bash
-./scan -p 1-10000 | ./probe | ./report -s "Automatic port scanning"
+$ ./scan -p 1-10000 | ./probe | ./report -s "Automatic port scanning"
 ```
 
 **SSH server based on paramiko**
 ```bash
-TODO
+$ ssh_server_paramiko <port> <username> <password>
 
-# Not working
+# Work in progress. Untested.
 ```
 
 **SSH login bruteforcer**
 ```bash
-Baaaar
+$ sshlogin [-h] [-t TARGET] [-p PORT] [-u USERNAME] [-w WORDLIST]
+
+options:
+  -h, --help            show this help message and exit
+  -t TARGET, --target TARGET
+                        the host IP number
+  -p PORT, --port PORT  the host portnumber
+  -u USERNAME, --username USERNAME
+                        the username
+  -w WORDLIST, --wordlist WORDLIST
+                        a password wordlist file
 ```
 
 **Todo application**
@@ -110,12 +123,22 @@ Baaaar
 
 **Web directory enumerator**
 ```bash
-TODO
+$ todo (no arguments)
+
+NOTE: Hardcoded filename "todolist.txt" in the current directory.
 ```
 
 **Web file downloader**
 ```bash
-TODO
+$ web_downloader [-h] -o OUTPUT url
+
+positional arguments:
+  url                   the url of a file or resource
+
+options:
+  -h, --help            show this help message and exit
+  -o OUTPUT, --output OUTPUT
+                        the name of the file you want to create
 ```
 
 **web subdomain enumerator**
