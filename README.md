@@ -118,14 +118,20 @@ options:
 
 **Todo application**
 ```bash
-Baaaar
+$ todo (no arguments)
+
+NOTE: Hardcoded filename "todolist.txt" in the current directory.
 ```
 
 **Web directory enumerator**
 ```bash
-$ todo (no arguments)
+$ web_directory_enumeration (no arguments)
 
-NOTE: Hardcoded filename "todolist.txt" in the current directory.
+# Hardcoded arguments:
+# URL = "http://example.loc"
+# FILE = "wordlist.txt"
+
+# Edit before use.
 ```
 
 **Web file downloader**
@@ -143,22 +149,65 @@ options:
 
 **web subdomain enumerator**
 ```bash
-TODO
+$ web_subdomain_enumeration (no arguments)
+
+# Hardcoded arguments
+# DOMAIN = "example.loc"
+# FILE = "subdomains.txt"
+
+# Edit before use.
 ```
 
 **Web login bruteforcer**
 ```bash
-TODO
+$ weblogin (no arguments)
+
+# Hardcoded values:
+# USERNAME, URL, PASSWORD_FILE_PATH, HEADERS, PARAMS
+
+# Edit before use.
 ```
 
 **Web login bruteforcer (wordpress)**
 ```bash
-TODO
+$ weblogin_wordpress (no arguments)
+
+# Hardcoded values:
+# USERNAME, URL, PASSWORD_FILE_PATH, HEADERS, PARAMS
+
+# Edit before use.
 ```
 
 **Web login curl2python (script generator)**
 ```bash
-TODO
+$ curl2python [-h] -X X [-H [HEADER ...]] --data-raw DATA_RAW url
+
+positional arguments:
+  url                   the url of the login form
+
+options:
+  -h, --help            show this help message and exit
+  -X X                  the form method, get or post
+  -H [HEADER ...], --header [HEADER ...]
+                        an http header, in key:value format
+  --data-raw DATA_RAW   the form data in raw form, urlencoded
+
+EXAMPLE:
+curl2python http://kirilla.com/login -X POST -H key:value--data-raw username=klaus&password=ichbinsanta
+
+# NOTE:
+# curl2python will take the same arguments as given to curl
+# to post to a login form on a webserver.
+# Steps:
+# Open a browser, e.g. Firefox, to a login page.
+# Open the browser developer tools (F12)
+# Switch to the network tab.
+# Attempt a login
+# Right-click the login page post-request, select "As Curl"
+# Paste the command in a Terminal and replace "curl" with curl2python.
+# Answer a few questions.
+# If all goes well, a script should be generated in the current directory, that 
+# The end result should be a python script that allows brute-forcing login attempts on the server.
 ```
 
 **Webmin exploit (CVE-2012-2982)**
