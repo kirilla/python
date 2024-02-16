@@ -16,6 +16,9 @@ dependencies = [
 	"flask",
 	"paramiko",
 	"pyfiglet",
+	"pymetasploit3",
+	"python-docx",
+	"python-nmap",
 	"requests",
 	"scapy",
 ]
@@ -41,3 +44,7 @@ weblogin_curl2python = "weblogin_curl2python.main:main"
 weblogin_wordpress = "weblogin_worpress.main:main"
 webmin_exploit = "webmin_exploit.main:main"
 wordlist_maker = "wordlist_maker.wordlist_maker:main"
+# port-scanning pipline
+scan = "ports_dont_come_easy.scan:main"
+probe = "ports_dont_come_easy.probe:main"
+report = "ports_dont_come_easy.report:main"
