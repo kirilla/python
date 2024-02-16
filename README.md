@@ -21,7 +21,7 @@
 
 ## Get started
 
-```bash
+```
 git clone https://github.com/kirilla/python.git
 cd ./python
 python3 -m venv venv
@@ -30,7 +30,7 @@ source venv/bin/activate
 
 ## Develop
 
-```bash
+```
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
 # Pandemonium. (Stay safe. Use vi.)
@@ -41,68 +41,68 @@ deactivate
 
 ## Install
 
-```bash
-pip install .
+```
+$ pip install .
 
-# When doing a pip install in a virtual python environment, the venv,
-# executables will be installed in venv/bin.
-# If not using a venv you can add --user to force pip to install to a user-location.
-# (The default is a systemwide location, which could be a bad idea. It depends.)
+When doing a pip install in a virtual python environment, the venv,
+executables will be installed in venv/bin.
+If not using a venv you can add --user to force pip to install to a user-location.
+(The default is a systemwide location, which could be a bad idea. It depends.)
 ```
 
 ## Usage
 
 **ARP network scanner**
-```bash
-arp_network_scanner
+```
+$ arp_network_scanner
 
-# NOTE: Hardcoded IP and network interface. Rewrite to use.
+NOTE: Hardcoded IP and network interface. Rewrite to use.
 ```
 
 **MD5 hash cracker**
-```bash
-md5_hash_cracker [-h] hash wordlist
+```
+$ md5_hash_cracker [-h] hash wordlist
 
 positional arguments:
   hash        the md5 hash string
   wordlist    the wordlist file path
 ```
 **pickle revshell maker**
-```bash
+```
 $ pickle_revshell_maker
-# prints a base64-encoded reverse shell in a pickle.
+prints a base64-encoded reverse shell in a pickle.
 
 $ pickle_web_vuln
-# web server listens on http://127.0.0.1:5000 
+web server listens on http://127.0.0.1:5000 
 
-# Send the pickle to the webserver on /unpickle
+Send the pickle to the webserver on /unpickle
 $ curl -d "pickled=gASVbgAAAAAAAACMBX..." http://127.0.0.1:5000/unpickle
 
-# Does it work? I don't think so. Someting about truncation.
+Does it work? I don't think so. Someting about truncation.
 ```
 
 **portscanner**
-```bash
+```
 $ portscanner (no arguments)
 
-# Harcoded IP 127.0.0.1 and port range 1 - 65535.
-# Edit the script to your heart's content.
+Harcoded IP 127.0.0.1 and port range 1 - 65535.
+Edit the script to your heart's content.
 ```
 
 **portscanner and vulnerability reporting toolchain**
-```bash
+```
 $ ./scan -p 1-10000 | ./probe | ./report -s "Automatic port scanning"
 ```
 
 **SSH server based on paramiko**
-```bash
+```
 $ ssh_server_paramiko <port> <username> <password>
 
-# Work in progress. Untested.
+Work in progress. Untested.
 ```
 
 **SSH login bruteforcer**
-```bash
+```
 $ sshlogin [-h] [-t TARGET] [-p PORT] [-u USERNAME] [-w WORDLIST]
 
 options:
@@ -117,25 +117,25 @@ options:
 ```
 
 **Todo application**
-```bash
+```
 $ todo (no arguments)
 
 NOTE: Hardcoded filename "todolist.txt" in the current directory.
 ```
 
 **Web directory enumerator**
-```bash
+```
 $ web_directory_enumeration (no arguments)
 
-# Hardcoded arguments:
-# URL = "http://example.loc"
-# FILE = "wordlist.txt"
+Hardcoded arguments:
+URL = "http://example.loc"
+FILE = "wordlist.txt"
 
-# Edit before use.
+Edit before use.
 ```
 
 **Web file downloader**
-```bash
+```
 $ web_downloader [-h] -o OUTPUT url
 
 positional arguments:
@@ -148,38 +148,38 @@ options:
 ```
 
 **web subdomain enumerator**
-```bash
+```
 $ web_subdomain_enumeration (no arguments)
 
-# Hardcoded arguments
-# DOMAIN = "example.loc"
-# FILE = "subdomains.txt"
+Hardcoded arguments
+DOMAIN = "example.loc"
+FILE = "subdomains.txt"
 
-# Edit before use.
+Edit before use.
 ```
 
 **Web login bruteforcer**
-```bash
+```
 $ weblogin (no arguments)
 
-# Hardcoded values:
-# USERNAME, URL, PASSWORD_FILE_PATH, HEADERS, PARAMS
+Hardcoded values:
+USERNAME, URL, PASSWORD_FILE_PATH, HEADERS, PARAMS
 
-# Edit before use.
+Edit before use.
 ```
 
 **Web login bruteforcer (wordpress)**
-```bash
+```
 $ weblogin_wordpress (no arguments)
 
-# Hardcoded values:
-# USERNAME, URL, PASSWORD_FILE_PATH, HEADERS, PARAMS
+Hardcoded values:
+USERNAME, URL, PASSWORD_FILE_PATH, HEADERS, PARAMS
 
-# Edit before use.
+Edit before use.
 ```
 
 **Web login curl2python (script generator)**
-```bash
+```
 $ curl2python [-h] -X X [-H [HEADER ...]] --data-raw DATA_RAW url
 
 positional arguments:
@@ -195,29 +195,57 @@ options:
 EXAMPLE:
 curl2python http://kirilla.com/login -X POST -H key:value--data-raw username=klaus&password=ichbinsanta
 
-# NOTE:
-# curl2python will take the same arguments as given to curl
-# to post to a login form on a webserver.
-# Steps:
-# Open a browser, e.g. Firefox, to a login page.
-# Open the browser developer tools (F12)
-# Switch to the network tab.
-# Attempt a login
-# Right-click the login page post-request, select "As Curl"
-# Paste the command in a Terminal and replace "curl" with curl2python.
-# Answer a few questions.
-# If all goes well, a script should be generated in the current directory, that 
-# The end result should be a python script that allows brute-forcing login attempts on the server.
+NOTE:
+curl2python will take the same arguments as given to curl
+to post to a login form on a webserver.
+
+* Open a browser, e.g. Firefox, to a login page.
+* Open the browser developer tools (F12)
+* Switch to the network tab.
+* Attempt a login
+* Right-click the login page post-request, select "As Curl"
+* Paste the command in a Terminal and replace "curl" with curl2python.
+* Answer a few questions.
+
+If all goes well, a script should be generated in the current directory. 
+This script can be used for brute-force login attempts on the server.
 ```
 
 **Webmin exploit (CVE-2012-2982)**
-```bash
-TODO
+```
+$ webmin_exploit (no arguments)
+
+Hardcoded arguments:
+REMOTE_HOST, REMOTE_PORT, USERNAME, PASSWORD, LOCAL_HOST, LOCAL_PORT
+
+Edit before use.
 ```
 
 **Wordlist maker (password fuzzer)**
-```bash
-TODO
+```
+$ wordlist_maker [-h] [-w WORDLISTS [WORDLISTS ...]] [-l LITERALS [LITERALS ...]] [-c CHARACTERS [CHARACTERS ...]] template
+
+A template-based wordlist generator
+
+positional arguments:
+  template              a template for the generator
+
+options:
+  -h, --help            show this help message and exit
+  -w WORDLISTS [WORDLISTS ...], --wordlists WORDLISTS [WORDLISTS ...]
+                        the path to a wordlist
+  -l LITERALS [LITERALS ...], --literals LITERALS [LITERALS ...]
+                        a literal string
+  -c CHARACTERS [CHARACTERS ...], --characters CHARACTERS [CHARACTERS ...]
+                        a character set
+
+The wordlist, literal and character set arguments should
+be given in the order in which they are used in the template.
+A colon is used to separate them.
+
+w:w:w    wordlist 1, 2 and 3
+w:c       wordlist 1, character set 1
+l:w:c    literal string 1, wordlist 1, character set 1
 ```
 
 ### Fineprint
