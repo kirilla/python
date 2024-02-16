@@ -1,11 +1,18 @@
-#!/home/kirilla/ws/python/venv/bin/python3
 #!/usr/bin/env python3
+
+"""
+sinfo - system info
+
+Adds metadata about the host on which the report is generated,
+to the report.
+"""
+
 import argparse
-from docx import Document
 from datetime import datetime
 import platform
 import socket
-import os
+
+from docx import Document
 
 
 def get_system_info():
@@ -43,8 +50,18 @@ def add_info_to_doc(doc_path, info):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Add system information to a pentest report")
-    parser.add_argument("-o", "--output", help="Output document name (default: pentest-<current date>.docx)")
+    """
+    Define arguments, set up some default values,
+    get system info and call the add_info_to_doc() function.
+    """
+
+    parser = argparse.ArgumentParser(
+            description="Add system information to a pentest report")
+
+    parser.add_argument(
+            "-o", "--output", 
+            help="Output document name (default: pentest-<current date>.docx)")
+
     args = parser.parse_args()
 
     output_date = datetime.now().strftime('%Y-%m-%d')

@@ -1,15 +1,27 @@
-#!/home/kirilla/ws/python/venv/bin/python3
 #!/usr/bin/env python3
+
+"""
+pinfo.py - a auxilliary script that adds an informative section
+to the pentesting port, in the form of a table with common TCP
+port numbers and the common services usually hosted on those ports.
+"""
+
+
 import argparse
-from docx import Document
 from datetime import datetime
 import sys
 import os
 
+from docx import Document
+
+
 def add_or_update_default_ports_section(doc):
-    """Add or update the 'Default Ports' section with a table of standard ports."""
+    """
+    Add or update the 'Default Ports' section with a table of standard ports.
+    """
+
     section_title = "Default Ports"
-    # Standard ports and their services
+
     ports_services = [
         (22, "SSH"),
         (25, "SMTP"),
@@ -21,7 +33,9 @@ def add_or_update_default_ports_section(doc):
     # Attempt to find the Default Ports section
     section_found = False
     for paragraph in doc.paragraphs:
-        if paragraph.text == section_title and paragraph.style.name == 'Heading 1':
+        if (paragraph
+                and paragraph.text == section_title
+                and paragraph.style.name == 'Heading 1'):
             section_found = True
             break
 
@@ -49,9 +63,27 @@ def add_or_update_default_ports_section(doc):
         row_cells[0].text = str(port)
         row_cells[1].text = service
 
+
 def main():
-    parser = argparse.ArgumentParser(description="Update or create a document with a 'Default Ports' section")
-    parser.add_argument("-o", "--output", help="Output document name (default: pentest-<current date>.docx)", default=f"pentest-{datetime.now().strftime('%Y-%m-%d')}.docx")
+    """
+    Define arguments, set up default values,
+    see if we have been given a file to work with,
+    or if a new one should be created,
+    ensure there is a heading,
+    call the add_or_update_default_ports_section() function,
+    and save the changes.
+    """
+
+    todays_date = datetime.now().strftime('%Y-%m-%d')
+
+    parser = argparse.ArgumentParser(
+            description="Update or create a document with a 'Default Ports' section")
+
+    parser.add_argument(
+            "-o", "--output",
+            help="Output document name (default: pentest-<current date>.docx)",
+            default=f"pentest-{todays_date}.docx")
+
     args = parser.parse_args()
 
     # Check if the document exists to decide on opening or creating a new one.

@@ -1,9 +1,18 @@
 #!/usr/bin/env python3
-#!/usr/bin/env python3
+
+"""
+report.py - Generate a report from the findings.
+
+This should include open ports, protocol analysis
+and vulnerability findings.
+"""
+
+
 import argparse
-from docx import Document
 from datetime import datetime
 import sys
+
+from docx import Document
 
 
 def find_or_create_section(document, section_title):
@@ -18,13 +27,20 @@ def find_or_create_section(document, section_title):
 
 
 def append_to_section(doc_path, section_title, content):
+    """
+    Find the document, find the paragraph,
+    append the content.
+    """
+
     try:
         doc = Document(doc_path)
     except Exception:
+        todays_date = datetime.now().strftime('%Y-%m-%d')
         doc = Document()
-        doc.add_heading(f"Penetration Testing {datetime.now().strftime('%Y-%m-%d')}", 0)
+        doc.add_heading(f"Penetration Testing {todays_date}", 0)
 
-    section_paragraph = find_or_create_section(doc, section_title)
+    # section_paragraph = 
+    find_or_create_section(doc, section_title)
 
     # Insert the content after the section title
     doc.add_paragraph(content)
@@ -32,22 +48,37 @@ def append_to_section(doc_path, section_title, content):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate a report from findings")
-    parser.add_argument("-o", "--output", help="Output document name (default: pentest-<current date>.docx)")
-    parser.add_argument("-s", "--section", default="Untitled", help="Section name under which to append findings (default: Untitled)")
+    """
+    Define arguments, expect a filename, but provide a default name as fallback,
+    expect findings on standard input, but handle manual input if no piped input
+    is present.
+    """
+
+    parser = argparse.ArgumentParser(
+            description="Generate a report from findings")
+
+    parser.add_argument(
+            "-o", "--output",
+            help="Output document name (default: pentest-<current date>.docx)")
+
+    parser.add_argument(
+            "-s", "--section", default="Untitled",
+            help="Section name under which to append findings (default: Untitled)")
+
     args = parser.parse_args()
 
-    output_file = args.output if args.output else f"pentest-{datetime.now().strftime('%Y-%m-%d')}.docx"
+    todays_date = datetime.now().strftime('%Y-%m-%d')
+
+    output_file = args.output if args.output else f"pentest-{todays_date}.docx"
 
     if not sys.stdin.isatty():
-        # Handling piped input
         for line in sys.stdin:
             finding = line.strip()
             if finding:
                 append_to_section(output_file, args.section, finding)
+                # pylint: disable=line-too-long
                 print(f"Appended finding to section '{args.section}' in {output_file}", file=sys.stderr)
     else:
-        # Handling direct input
         print("Enter your finding (Ctrl+D to finish):", file=sys.stderr)
         while True:
             try:
@@ -55,6 +86,7 @@ def main():
                 finding = line.strip()
                 if finding:
                     append_to_section(output_file, args.section, finding)
+                    # pylint: disable=line-too-long
                     print(f"Appended finding to section '{args.section}' in {output_file}", file=sys.stderr)
             except EOFError:
                 break

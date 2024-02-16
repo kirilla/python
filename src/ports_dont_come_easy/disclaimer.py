@@ -1,9 +1,15 @@
-#!/home/kirilla/ws/python/venv/bin/python3
 #!/usr/bin/env python3
+
+"""
+disclaimer.py - adds a disclaimer section to the pentest report
+"""
+
+
 import argparse
-from docx import Document
 from datetime import datetime
 import sys
+
+from docx import Document
 
 
 def add_disclaimer_section(doc_path, disclaimer_text):
@@ -14,7 +20,8 @@ def add_disclaimer_section(doc_path, disclaimer_text):
         doc = Document()
         doc.add_heading('Disclaimer', level=1)
     else:
-        doc.add_page_break()  # Add a page break before the disclaimer for readability
+        # Add a page break before the disclaimer for readability
+        doc.add_page_break()
         doc.add_heading('Disclaimer', level=1)
 
     doc.add_paragraph(disclaimer_text)
@@ -22,14 +29,27 @@ def add_disclaimer_section(doc_path, disclaimer_text):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Add a disclaimer section to the pentest report")
-    parser.add_argument("-o", "--output", help="Output document name (default: pentest-<current date>.docx)", default=f"pentest-{datetime.now().strftime('%Y-%m-%d')}.docx")
+    """
+    Start the program, define arguments,
+    define the disclaimer text,
+    and call the add_disclaimer_section() function.
+    """
+
+    parser = argparse.ArgumentParser(
+            description="Add a disclaimer section to the pentest report")
+
+    parser.add_argument(
+            "-o", "--output",
+            help="Output document name (default: pentest-<date>.docx)",
+            default=f"pentest-{datetime.now().strftime('%Y-%m-%d')}.docx")
+
     args = parser.parse_args()
 
-    # Disclaimer text (customize as needed)
+    # pylint: disable=line-too-long
     disclaimer_text = "The findings in this report are for authorized use only. The methodologies used are intended for educational purposes and should not be used maliciously."
 
     add_disclaimer_section(args.output, disclaimer_text)
+
     print(f"Disclaimer section added to '{args.output}'.", file=sys.stderr)
 
 

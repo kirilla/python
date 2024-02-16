@@ -16,11 +16,17 @@ with "nc -luvp 3" on localhost.
 
 import argparse
 import socket
+import sys
 
 from scapy.all import IP, UDP, sr
 
 
 def scan_tcp_ports(host, ports, verbose):
+    """
+    Try connecting to the given TCP ports of the host, 
+    and return the open ones.
+    """
+
     if verbose:
         print(f"v: scanning {host}, {len(ports)} ports")
 
@@ -42,16 +48,20 @@ def scan_tcp_ports(host, ports, verbose):
         except Exception as e:
             if verbose:
                 print(f"v: Exception for port {port}: {e}")
-            pass
 
     return open_ports
 
 
 def scan_udp_ports(host, ports, verbose):
+    """
+    Try connecting to the given UDP ports of the host,
+    and return the open ones.
+    """
     if verbose:
         print(f"v: scanning udp {host}, {len(ports)} ports")
     open_ports = []
     for port in ports:
+        # pylint: disable=pointless-string-statement # commenting out some code
         """
         try:
             with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
@@ -85,19 +95,24 @@ def scan_udp_ports(host, ports, verbose):
 
 
 def main():
+    """
+    Define the arguments, decide the port range,
+    and call the scan...() function for the given protocol.
+    """
+
     parser = argparse.ArgumentParser(
             description="Simple Port Scanner for Piping")
 
     parser.add_argument(
-            "-H", "--host", default="127.0.0.1", 
+            "-H", "--host", default="127.0.0.1",
             help="Host to scan, default is localhost")
 
     parser.add_argument(
-            "-p", "--port", default="1-1024", 
+            "-p", "--port", default="1-1024",
             help="Port range to scan, default is 1-1024")
 
     parser.add_argument(
-            "-t", "--type", default="tcp", choices=["tcp", "udp"], 
+            "-t", "--type", default="tcp", choices=["tcp", "udp"],
             help="Type of scan: tcp or udp, default is tcp")
 
     parser.add_argument(
@@ -108,9 +123,9 @@ def main():
 
     host = args.host
     protocol = args.type.lower()
-    
+
     start_port, end_port = args.port.split('-', 1)
-    
+
     start_port = int(start_port)
     end_port = int(end_port)
 
